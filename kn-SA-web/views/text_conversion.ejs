@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sentiment Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<script>
+
+function copyText() {
+  var copyText = document.getElementsByClassName("form-control");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+
+</script>
+
+<body>
+  <a type="button" class="btn btn-primary" style="float: right;margin: 10px;" href="/">Back</a>
+  <div class="container">
+    <h2>Text Conversion </h2>
+    <p>Enter the text below to be processed for sentiment analysis:</p>
+    <form action="/text_conversion" method="POST">
+      <div class="form-group">
+        <label for="comment">Text:</label>
+        <textarea name="text" class="form-control" required placeholder="Enter text" rows="5" id="comment"></textarea>
+        <br>
+        <button type=”submit” value=”submit” class="btn btn-primary" class="button">submit</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="container">
+    <div class="col-sm-6">
+      <h2>Positive Words:</h2>
+      <form>
+        <div class="form-group">
+          <label for="comment">The positive words in the given texts are given below:</label>
+          <textarea readonly name="text" class="form-control" required placeholder="entered string" rows="5"
+            id="comment" >
+                    <% for(var i=0; i < pos.length; i++) { %>
+                        <%= pos[i]%>
+                        <% } %>
+            </textarea>
+            <br>
+            <p>Positive word Count : <%= pos_count%></p>
+            <!-- <button onclick="copyText()">Copy text</button>  -->
+        </div>
+      </form>
+
+
+    </div>
+
+    <div class="col-sm-6">
+      <h2>Negative Words:</h2>
+      <form>
+        <div class="form-group">
+            <label for="comment">The negative words in the given texts are given below:</label>
+            <textarea readonly name="text" class="form-control" required placeholder="entered string" rows="5"
+            id="comment">
+                        <% for(var i=0; i < neg.length; i++) { %>
+                            <%= neg[i]%>
+                            <% } %>
+                </textarea>
+        </div>
+      </form>
+      <p>Negative word Count : <%= neg_count%></p>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>

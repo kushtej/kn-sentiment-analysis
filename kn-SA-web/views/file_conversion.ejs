@@ -1,0 +1,174 @@
+<html>
+
+<head>
+
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Pie Chart -->
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Positive Words',     <%= pos_count %>],
+                ['Neutral Words',      <%= neut %>],
+                //   ['Commute',  2],
+                //   ['Watch TV', 2],
+                ['Negative Words',    <%= neg_count %>]
+            ]);
+
+            var options = {
+                title: 'Pie Chart',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+
+
+    <!-- Bar Graph -->
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Words', 'Percentage'],
+                ["Positive Words", <%= pos_count %>],
+                ["Neutral Words", <%= neut %>],
+                ["Negative Words",<%= neg_count %>],
+                // ["Queen's bishop pawn (c4)", 10],
+                // ['Other', 3]
+            ]);
+
+            var options = {
+                title: 'Bar Graph',
+                width: 900,
+                legend: { position: 'none' },
+                // chart: { title: 'Chess opening moves',
+                //          subtitle: 'popularity by percentage' },
+                bars: 'horizontal', // Required for Material Bar Charts.
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'Percentage' } // Top x-axis.
+                    }
+                },
+                bar: { groupWidth: "50%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            chart.draw(data, options);
+        };
+    </script>
+</head>
+
+<body onload="myFunction()">
+    <a type="button" class="btn btn-primary" style="float: right;margin: 10px;" href="/">Back</a>
+    <div class="container mt-3">
+        <h2>File Classification</h2>
+        <p>Upload the text file in order to classify them into positive,negative and neutral text.
+            Additionally graph representation is given for an indepth overview.
+        </p>
+
+        <p class="text-danger" >Upload only .txt file</p>
+
+        <form action="/file_conversion" method="post" enctype="multipart/form-data">
+            <input type="file" style="background-color:	#E0E0E0;" id='myFile' name="filetoupload">
+            <!-- <label class="custom-file-label" type="file" class="custom-file-input" >Choose file</label> -->
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <script>
+        function myFunction() {
+            document.getElementById("myFile").required = true;
+        }
+    </script>
+
+    <br><br><br><br>
+    <div class="main">
+        <div id="piechart_3d" style="width: 800px; height: 400px;margin-left: -400px;" class="sidebar"></div><br><br>
+        <div id="top_x_div" style="width: 400px; height: 300px;" class="page-wrap"></div>
+    </div>
+
+
+    <style>
+        .main {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 400px;
+            height: 400px;
+            background:  #ffffff;
+            float: left;
+        }
+
+        .page-wrap {
+            width: 400px;
+            background: #ffffff;
+            height: 400px;
+            margin-left: 200px;
+        }
+    </style>
+
+
+    <div class="main">
+        <br><br><br><br>
+        <div class='sidebar' style="margin-left: -200px;">
+            <h2>Positive Words:</h2>
+            <form>
+                <div class="form-group">
+                    <label for="comment">The positive words in the given texts are given below:</label>
+                    <textarea readonly name="text" class="form-control" required placeholder="entered string" rows="5"
+                        id="comment">
+                        <% for(var i=0; i < pos.length; i++) { %>
+                            <%= pos[i]%>
+                            <% } %>
+                </textarea>
+                    <br>
+                    <p>Positive word Count : <%= pos_count%></p>
+                    <!-- <button onclick="copyText()">Copy text</button>  -->
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="page-wrap" style="margin-left: 400px;">
+            <h2>Negative Words:</h2>
+            <form>
+                <div class="form-group">
+                    <label for="comment">The negative words in the given texts are given below:</label>
+                    <textarea readonly name="text" class="form-control" required placeholder="entered string" rows="5"
+                        id="comment">
+                            <% for(var i=0; i < neg.length; i++) { %>
+                                <%= neg[i]%>
+                                <% } %>
+                    </textarea>
+                </div>
+            </form>
+            <p>Negative word Count : <%= neg_count%></p>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

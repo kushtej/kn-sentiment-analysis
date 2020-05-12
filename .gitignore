@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+*~
+kn-lexicons/
+uploaded_documents/
+*.pyc
+.DS_Store
+/*.env

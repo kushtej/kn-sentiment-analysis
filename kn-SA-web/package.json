@@ -1,0 +1,21 @@
+{
+  "name": "kn-sa",
+  "version": "1.0.0",
+  "description": "Sentiment Analysis for Kannada Language.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tejasvi S",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "nodemon": "^2.0.3",
+    "path": "^0.12.7",
+    "python-shell": "^2.0.0"
+  }
+}
