@@ -55,15 +55,8 @@ http://127.0.0.1:3000/
 
 The Following is the sequence diagram of the Application :
 
-```
-mermaid
-sequenceDiagram
-Client Web Browser ->> NodeJS Server: Request
-NodeJS Server ->>Django API Server: API Request
-Django API Server ->> NodeJS Server: API Response
-NodeJS Server ->> Client Web Browser:  Response
+![](./kn-SA-web/public/images/UML.png)
 
-```
 
 
 > **Note:** The kannada lexicons are not opensouce and therefore not pushed to github.About 7k lexicons were generated for this project. For Kannada lexicons and more information about kn-lexicons, drop an email request at [this email.](mailto:tejasvi.sridhar@gmail.com)
