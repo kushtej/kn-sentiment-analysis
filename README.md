@@ -55,7 +55,8 @@ http://127.0.0.1:3000/
 
 The Following is the sequence diagram of the Application :
 
-```mermaid
+```
+mermaid
 sequenceDiagram
 Client Web Browser ->> NodeJS Server: Request
 NodeJS Server ->>Django API Server: API Request
