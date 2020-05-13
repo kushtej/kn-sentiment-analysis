@@ -21,7 +21,9 @@ $ sudo apt-get install npm
 
 **To Run the project:**
 
-    $ cd kn-SA-web/
+```
+$ cd kn-SA-web/
+```
 
  ```
 $ npm install
@@ -50,6 +52,22 @@ Now, open your Web-Browser and type-in
  ```
 http://127.0.0.1:3000/
 ```
+
+## Alternate Method:Installation using Bash Script (Experimental)
+
+Alternatively, A bash script is written to automate the installation process of the project. Execute this script only after **nodejs,npm and pip** are installed.
+#### Steps to execute the bash script:
+
+ - `chmod +x installation.sh`
+ - `./installation.sh`
+ 
+
+ ***NOTE:***
+ - The written bash scirpt is to be executed only after **nodejs , npm
+   and pip** are installed otherwise, The script may not work.
+ - This script only works for pip virtutal environment and not any other virtual environment.
+
+
 
 ## UML diagram
 
