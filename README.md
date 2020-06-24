@@ -67,6 +67,16 @@ Alternatively, A bash script is written to automate the installation process of 
    and pip** are installed otherwise, The script may not work.
  - This script only works for pip virtutal environment and not any other virtual environment.
 
+## Dataset :
+
+**Step 1 :** The Dataset of the project can be downloaded here : [https://www.kaggle.com/kushtej/kannada-lexicon-dataset/](https://www.kaggle.com/kushtej/kannada-lexicon-dataset)
+
+
+**Step 2 :** Move the **`kn-lexicon.json`** file to `/kn-SA-API/api/kn-lexicons/` .
+				   OR
+```
+$ mv kn-lexicon.json /kan-SA-API/api/kn-lexicons/
+```
 
 
 ## UML diagram
@@ -76,8 +86,6 @@ The Following is the sequence diagram of the Application :
 ![](./kn-SA-web/public/images/UML.png)
 
 
-
-> **Note:** The kannada lexicons are not opensouce and therefore not pushed to github.About 7k lexicons were generated for this project. For Kannada lexicons and more information about kn-lexicons, drop an email request at [this email.](mailto:tejasvi.sridhar@gmail.com)
 
 ## License
 
